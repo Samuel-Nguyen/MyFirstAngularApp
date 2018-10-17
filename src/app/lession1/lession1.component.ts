@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'app-my-server',
-	templateUrl: './my-server.component.html',
-	styleUrls: ['./my-server.component.css']
+	selector: 'app-lession1',
+	templateUrl: './lession1.component.html',
+	styleUrls: ['./lession1.component.css']
 })
-export class MyServerComponent implements OnInit {
+export class Lession1Component implements OnInit {
 
 	constructor() {
 		setTimeout(() => {
@@ -20,10 +20,12 @@ export class MyServerComponent implements OnInit {
 	serverStatus :String = 'Offline';
 	allowNewServer = false;
 	serverCreationStatus = 'This is no server binding now!';
-	serverPort:number = 0;
-	serverHost = '';
-	serverPass = '';
-	isDisplay =  false;
+	serverPort :number = 0;
+	serverHost :String = '';
+	serverPass :String = '';
+	isDisplay :boolean =  false;
+	ngTemplate :String = '';
+	ngTemplateCheck :boolean = false;
 
 	/*Declare Getter Setter*/
 	getServerStatus(){
@@ -49,5 +51,12 @@ export class MyServerComponent implements OnInit {
 		this.serverHost = '';
 		this.serverPass = '';
 		this.serverCreationStatus = 'This is no server binding now!';
+	}
+	getTemplate(){
+		if(this.ngTemplate != ''){
+			this.ngTemplateCheck = true;
+		}else{
+			this.ngTemplateCheck = false;
+		}
 	}
 }
