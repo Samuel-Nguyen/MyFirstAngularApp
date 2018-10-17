@@ -1,0 +1,52 @@
+<!-- ngIf - 2 way binding Data -->
+<label> Section using 2 way bindding Data</label><br/>
+=====================================================================================================================
+<div class="row">
+	<div class="introServer" >
+		Server is <label class="serverStatus">{{getServerStatus()}}</label><br/>
+		<!-- Get Data Static and Dynamic Later -->
+		{{allowNewServer}} || <label [innerText] = 'allowNewServer'></label><br/>
+		<label [innerText] = "serverCreationStatus"></label><br/>
+		<div *ngIf="isDisplay">
+			Current server Host is: <br/><label [innerText] = 'serverHost'> </label><br/>
+			Current server Pass is: <br/><label [innerText] = 'serverPass'> </label><br/>
+			Current server Port is: <br/><label [innerText] = 'serverPort'> </label><br/>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div *ngIf="!isDisplay">
+			<label>Server Address</label>
+			<input type="text" class="form-control" placeholder="Server Address" [(ngModel)]="serverHost">
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div *ngIf="!isDisplay">
+			<label>Server Pass</label>
+			<input type="password" class="form-control" placeholder="Password" [(ngModel)]="serverPass">
+			<button class="btn btn-primary" [disabled] = "!allowNewServer" (click) = "onGetData()">Add Server</button>
+			<button class="btn btn-primary" [disabled] = "!allowNewServer" (click) = "onStopServer()">Stop Server</button>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div *ngIf="!isDisplay">
+			<label >Server Port</label>
+			<input type="text" class="form-control" placeholder="Server Port" [(ngModel)]="serverPort">
+		</div>
+	</div>
+	
+</div>
+
+<!-- ngIf - ngTemplate -->
+<label>Section Using ng-Template</label><br/>
+=====================================================================================================================
+<div class="row">
+	<div class="col-md-4"><input type="text" class="form-control" placeholder="Text input"  [(ngModel)]="ngTemplate"></div>
+	<div class="col-md-4"><button class="btn btn-primary" (click) = "getTemplate()">Checking</button></div>
+	<div class="col-md-4">
+		<div *ngIf="ngTemplateCheck; else noTemplate">Template is binding success</div>
+		<ng-template #noTemplate>No Template bindding</ng-template>
+	</div>
+</div>
